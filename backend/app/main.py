@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from .seed import seed
 from .database import Base, engine
 from .routers import equipment, bookings, admin
 
 Base.metadata.create_all(bind=engine)
-
+seed()
 app = FastAPI(
     title="FarmShare API",
     description="Shared farm equipment management system",
